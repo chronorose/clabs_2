@@ -1,7 +1,9 @@
 #include <stdio.h>
+#include <assert.h>
 
+//settings; walls; randomize(?); several players; ncurses moment; 
 int main() {
-    unsigned int x = 0;
-    scanf("%iu", &x);
-
+    long x = 0;
+    scanf("%ld", &x);
+    assert(x >= 2);
 }
