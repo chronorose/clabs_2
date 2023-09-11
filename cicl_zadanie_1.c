@@ -3,7 +3,7 @@
 int main() {
     unsigned long x = 0;
     scanf("%lu", &x);
-    for(unsigned long i = 0; i <= x; i++) {
+    for(size_t i = 0; i <= x; i++) {
         int c = 0;
         if(i % 3 == 0) {
             printf("fizz");

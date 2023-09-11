@@ -6,7 +6,7 @@ int main() {
     if(x < 2) {
         printf("exception: menshe 2\n");
     } else {
-        unsigned long i = x / 2;
+        size_t i = x / 2;
         while(i >= 2) {
             if(x % i == 0) {
                 i = 0;

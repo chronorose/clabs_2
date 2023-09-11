@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int check(unsigned long x) {
-    unsigned long i = x / 2;
+    size_t i = x / 2;
     while(i >= 2) {
         if(x % i == 0) {
             i = 0;
@@ -21,7 +21,7 @@ int main() {
     if(x < 2) {
         printf("exception: menshe 2\n");
     } else {
-        for(unsigned long i = 0; i <= x; i++) {
+        for(size_t i = 0; i <= x; i++) {
             if(check(i)) {
                 printf("%lu ", i);
             }
