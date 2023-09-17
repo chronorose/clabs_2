@@ -1,7 +1,8 @@
 #include <stdio.h>
+#include <assert.h>
 
-int decnumber(unsigned long x) {
-    size_t i = 0;
+short numberLength(unsigned long x) {
+    short i = 0;
     if (x == 0) return 1;
     while (x > 0) {
         i++;
@@ -28,13 +29,11 @@ int main() {
     unsigned long x = 0, y = 0;
     scanf("%lu", &x);
     scanf("%lu", &y);
-    if(x > y) printf("error\n");
-    else {
-        for (size_t i = x; i <= y; i++) {
-            if(decnumber(i) == 6) {
-                if(first_3_sum(i) == second_3_sum(i))
-                    printf("%lu ", i);
-            }
-        } 
-    }
+    assert(x < y);
+    for (unsigned long i = x; i <= y; i++) {
+        if(numberLength(i) == 6) {
+            if(first_3_sum(i) == second_3_sum(i))
+                printf("%lu ", i);
+        }
+    } 
 }

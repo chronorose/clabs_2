@@ -3,10 +3,8 @@
 
 int main() {
     unsigned long x = 0;
-    long y = 0;
-    scanf("%lu", &y);
-    assert(y > 0);
-    x = y;
+    scanf("%lu", &x);
+    assert(x >= 2);
     size_t count = 0;
     unsigned long sc = (x * (x + 1)) / 2 - 1;
     for(size_t i = 0; i <= sc;) {
