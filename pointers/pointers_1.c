@@ -1,22 +1,18 @@
 #include <stdio.h>
 
-int* test() {
-    /* int a; */
-    /* unsigned int b; */
-    /* long c; */
-    /* char d; */
-    /* printf("%p\n%p\n%p\n%p", &a, &b, &c, &d); */
-    int *a = 0;
-    return a;
+void test() {
+    int a;
+    printf("%p\n", &a);
+    a = 32;
+    int b = 34;
+    int c = 36;
+}
+
+void kek() {
+    test();
 }
 
 int main() {
-    int *a = test();
-    int *b = test();
-    if(a == b) {
-        printf("same addres");
-    } else {
-        printf("not the same address");
-    }
+    test();
+    kek();
 }
-//blblblbl
