@@ -66,8 +66,6 @@ void extractDigits(int* arr, int x, int n) {
     }
 }
 
-// test -> 
-
 int compareArrays(int* arr1, int* arr2, int n1, int n2) {
     size_t iter = n1 < n2 ? n1 : n2;
     size_t i = 0;
@@ -75,9 +73,25 @@ int compareArrays(int* arr1, int* arr2, int n1, int n2) {
         if(arr1[i] > arr2[i]) return 1;
         if(arr1[i] < arr2[i]) return -1;
     }
-    if(arr1[i] == arr2[i] && n1 < n2) return -1;
-    if(arr1[i] == arr2[i] && n2 < n1) return 1;
+    if(n1 < n2) return -1;
+    if(n1 > n2) return 1;
     return 0;
+}
+
+void compareArraysTest() {
+    int arr1[32];
+    int arr2[32];
+    size_t i = 0;
+    for(i = 0; i < 10; i++) {
+        arr1[i] = i;
+        arr2[i] = i;
+    }
+    printf("[Test for compareArrays] 0 == %d\n", compareArrays(arr1, arr2, i, i));
+    arr1[i + 1] = i + 1;
+    printf("[Test for compareArrays] 1 == %d\n", compareArrays(arr1, arr2, i + 1, i));
+    arr2[i + 1] = i + 1;
+    arr2[i + 2] = i + 2;
+    printf("[Test for compareArrays] -1 == %d\n", compareArrays(arr1, arr2, i + 1, i + 2));
 }
 
 int main() {
@@ -87,6 +101,7 @@ int main() {
     scanArr(arr, n);
     int c = findInArr(arr, n, 6);
     revertArray(arr, n);
+    printf("[revertArray test]:\n");
     printArr(arr, n);
     printf("maxInArray -> %d\n", maxInArray(arr, n));
     printf("findInArray(6) -> %d\n", c);
@@ -94,14 +109,5 @@ int main() {
     for(size_t i = 0; i < 30; i++) arr_for_digits[i] = i + 1;
     extractDigits(arr_for_digits, 340123, 30);
     printArr(arr_for_digits, 10);
-    int arr1[32];
-    int arr2[32];
-    int i = 0;
-    for(i = 0; i < 10; i++) {
-        arr1[i] = i;
-        arr2[i] = i;
-    }
-    printf("[Test for compareArrays] 0 == %d\n", compareArrays(arr1, arr2, i, i));
-    arr1[i + 1] = i + 1;
-    printf("Result of compareArrays -> %d\n", compareArrays(arr1, arr2, i + 1, i));
+    compareArraysTest();
 }
