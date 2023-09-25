@@ -14,39 +14,70 @@ void allocateArr(int** arr, int n) {
 }
 
 
-int scanArr(int* arr, int n) {
-    size_t i = 0;
-    while(i < n) {
+size_t scanArr(int* arr, size_t* n, size_t capacity) {
+    size_t i = *n;
+    while(i < capacity) {
         scanf("%d", &arr[i]);
         if(arr[i] == 0) {
+            *n = i;
             return 1;
         }
         i++;
     }
+    *n = i;
     return 0;
 }
 
-void processArr(int* arr, size_t n) {
-    if(arr == NULL) {
-        allocateArr(&arr, n);
-    } else {
+void printArr(int* arr, int n) {
+    for(int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+/* size_t processArr(int** arr, size_t n, size_t capacity) { */
+/*     if(*arr == NULL) { */
+/*         allocateArr(arr, capacity); */
+/*     } else { */
+/*         int* new_arr; */
+/*         allocateArr(&new_arr, capacity); */
+/*         for(size_t i = 0; i < capacity / 2; i++) { */
+/*             new_arr[i] = (*arr)[i]; */
+/*         } */
+/*         free(*arr); */
+/*         *(arr) = new_arr; */
+/*     } */
+/*     size_t j = scanArr(*arr, n); */
+/*     if(!j) { */
+/*         return processArr(arr, j, capacity * 2); */
+/*     } else { */
+/*         return n; */
+/*     } */
+/* } */
+
+int* processArr(size_t* n, size_t* cap) {
+    int* arr;
+    allocateArr(&arr, *cap);
+    while(1) {
+        if(scanArr(arr, n, *cap)) {
+            return arr;
+        } 
+        *cap *= 2;
         int* new_arr;
-        allocateArr(&new_arr, n);
-        for(int i = 0; i < n / 2; i++) {
+        allocateArr(&new_arr, *cap);
+        for(size_t i = 0; i < *cap / 2; i++) {
             new_arr[i] = arr[i];
         }
         free(arr);
         arr = new_arr;
     }
-    if(scanArr(arr, n)) {
-        free(arr);
-        return;
-    } else {
-        processArr(arr, n * 2);
-    }
 }
 
 int main() {
-    int* arr = NULL;
-    processArr(arr, 2);
+    size_t cap = 1;
+    size_t n = 0;
+    int* arr = processArr(&n, &cap);
+    /* printf("%lu\n", size); */
+    printArr(arr, n);
+    free(arr);
 }
