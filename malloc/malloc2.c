@@ -8,7 +8,7 @@ void nullCheck(void* ptr) {
     }
 }
 
-void allocateArr(int** arr, int n) {
+void allocateArr(int** arr, size_t n) {
     *arr = malloc(sizeof(int) * n);
     nullCheck(*arr);
 }
@@ -29,7 +29,7 @@ size_t scanArr(int* arr, size_t* n, size_t capacity) {
 }
 
 void printArr(int* arr, int n) {
-    for(int i = 0; i < n; i++) {
+    for(size_t i = 0; i < n; i++) {
         printf("%d ", arr[i]);
     }
     printf("\n");
