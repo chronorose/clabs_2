@@ -29,8 +29,6 @@ void reverseArr(int arr[4][4]) {
     for(int i = 0; i < size; i++) {
         for(int j = i + 1; j < size; j++) {
             swap(&arr[i][j], &arr[j][i]);
-            /* swap(&arr[size - i - 1][size - j - 1], &arr[i][j]); */
-            /* arr[size - i - 1][size - j - 1] = arr[i][j]; */
         }
     }
 }
