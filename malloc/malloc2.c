@@ -35,26 +35,6 @@ void printArr(int* arr, int n) {
     printf("\n");
 }
 
-/* size_t processArr(int** arr, size_t n, size_t capacity) { */
-/*     if(*arr == NULL) { */
-/*         allocateArr(arr, capacity); */
-/*     } else { */
-/*         int* new_arr; */
-/*         allocateArr(&new_arr, capacity); */
-/*         for(size_t i = 0; i < capacity / 2; i++) { */
-/*             new_arr[i] = (*arr)[i]; */
-/*         } */
-/*         free(*arr); */
-/*         *(arr) = new_arr; */
-/*     } */
-/*     size_t j = scanArr(*arr, n); */
-/*     if(!j) { */
-/*         return processArr(arr, j, capacity * 2); */
-/*     } else { */
-/*         return n; */
-/*     } */
-/* } */
-
 int* processArr(size_t* n, size_t* cap) {
     int* arr;
     allocateArr(&arr, *cap);
@@ -77,7 +57,6 @@ int main() {
     size_t cap = 1;
     size_t n = 0;
     int* arr = processArr(&n, &cap);
-    /* printf("%lu\n", size); */
     printArr(arr, n);
     free(arr);
 }
