@@ -6,14 +6,11 @@ int check(unsigned long x) {
     short temp = 0;
     while(i <= n) {
         if(x % i == 0) {
-            i = 0;
-            temp++;
-            break;
+            return 1;
         }
         i++;
     }
-    if(temp) return 0;
-    return 1;
+    return 0;
 }
 
 int main() {
@@ -24,7 +21,7 @@ int main() {
         return 1;
     }
     for(size_t i = 2; i <= x; i++) {
-        if(check(i)) {
+        if(!check(i)) {
             printf("%lu ", i);
         }
     }
