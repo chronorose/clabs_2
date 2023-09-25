@@ -119,7 +119,6 @@ int main() {
     scanf("%lu", &size);
     int* arr; 
     allocateArr(&arr, size);
-    nullCheck(arr);
 
     scanArr(arr, size);
     printArr(arr, size);
@@ -138,7 +137,6 @@ int main() {
     scanf("%d", &extract);
     int* extractArr;
     allocateArr(&extractArr, 10);
-    nullCheck(extractArr);
     initArray(extractArr, 10);
     extractDigits(extractArr, extract, 10);
     printArr(extractArr, 10);
@@ -148,9 +146,7 @@ int main() {
     int* arr2;
 
     allocateArr(&arr1, 20);
-    nullCheck(arr1);
     allocateArr(&arr2, 20);
-    nullCheck(arr2);
     initArray(arr1, 10);
     initArray(arr2, 10);
 
