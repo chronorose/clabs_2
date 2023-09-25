@@ -27,7 +27,7 @@ void printArr(int* arr, int n) {
     printf("\n");
 }
 
-int* findSubArr(int* arr1, int* arr2, int n1, int n2) {
+int* findSubArr(int* arr1, int* arr2, size_t n1, size_t n2) {
     for(size_t i = 0; i < n1; i++) {
         size_t j = 0;
         int* mem = &arr1[i];
@@ -39,7 +39,7 @@ int* findSubArr(int* arr1, int* arr2, int n1, int n2) {
     return NULL;
 }
 
-void removeSubArr(int* arr1, int* arr2, int* n1, int n2) {
+void removeSubArr(int* arr1, int* arr2, size_t* n1, size_t n2) {
     int* ptr;
     while((ptr = findSubArr(arr1, arr2, *n1, n2)) != NULL) {
         for(int* i = ptr ; i < arr1 + *n1; i++) {
@@ -50,14 +50,13 @@ void removeSubArr(int* arr1, int* arr2, int* n1, int n2) {
 }
 
 int main() {
-    int n1 = 11;
-    int n2 = 3;
-    /* int* arr1 = initArray(n1); */
+    size_t n1 = 11;
+    size_t n2 = 3;
     int* arr1 = malloc(sizeof(int) * n1);
     int* arr2 = malloc(sizeof(int) * n2); 
-    for(int i = 0; i < 7; i++) arr1[i] = i;
-    for(int i = 7; i < n1; i++) arr1[i] = i - 7;
-    for(int i = 0; i < n2; i++) arr2[i] = i;
+    for(size_t i = 0; i < 7; i++) arr1[i] = i;
+    for(size_t i = 7; i < n1; i++) arr1[i] = i - 7;
+    for(size_t i = 0; i < n2; i++) arr2[i] = i;
     printArr(arr1, n1);
     removeSubArr(arr1, arr2, &n1, n2);
     printArr(arr1, n1);

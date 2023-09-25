@@ -13,21 +13,21 @@ void allocateArr(int** ptr, size_t n) {
     nullCheck(*ptr);
 }
 
-int* initArray(int n) {
+int* initArray(size_t n) {
     int* arr;
     allocateArr(&arr, n);
     for(size_t i = 0; i < n; i++) arr[i] = i;
     return arr;
 }
 
-void printArr(int* arr, int n) {
+void printArr(int* arr, size_t n) {
     for(size_t i = 0; i < n; i++) {
         printf("%d ", arr[i]);
     }
     printf("\n");
 }
 
-int* findSubArr(int* arr1, int* arr2, int n1, int n2) {
+int* findSubArr(int* arr1, int* arr2, size_t n1, size_t n2) {
     for(size_t i = 0; i < n1; i++) {
         size_t j = 0;
         int* mem = &arr1[i];
@@ -40,11 +40,11 @@ int* findSubArr(int* arr1, int* arr2, int n1, int n2) {
 }
 
 int main() {
-    int n1 = 10;
-    int n2 = 3;
+    size_t n1 = 10;
+    size_t n2 = 3;
     int* arr1 = initArray(n1);
     int* arr2 = malloc(sizeof(int) * n2); 
-    for(int i = 0; i < n2; i++) arr2[i] = i + 7;
+    for(size_t i = 0; i < n2; i++) arr2[i] = i + 7;
     int* ptr = findSubArr(arr1, arr2, n1, n2);
     printArr(arr1, n1);
     printArr(arr2, n2);
