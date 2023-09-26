@@ -50,7 +50,7 @@ void removeSubArr(int* arr1, int* arr2, size_t* n1, size_t n2) {
 }
 
 int main() {
-    size_t n1 = 11;
+    size_t n1 = 10;
     size_t n2 = 3;
     int* arr1 = malloc(sizeof(int) * n1);
     int* arr2 = malloc(sizeof(int) * n2); 
