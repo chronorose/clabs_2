@@ -1,20 +1,46 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int** createArray(size_t size) {
+void nullCheck(void* ptr) {
+    if(ptr == NULL) {
+        printf("not enough memory!");
+        exit(0);
+    }
+}
+
+int** createArray(int size) {
     int** arr;
     arr = malloc(sizeof(int*) * size);
+    nullCheck(arr);
     for(size_t i = 0; i < size; i++) {
         arr[i] = malloc(sizeof(int) * (i + 1));
+        nullCheck(arr[i]);
     }
     return arr;
 }
 
-unsigned int binom(int n, int k) {
+size_t binom(size_t n, size_t k) {
     if(k > n / 2) k = n - k;
     if(k == 1) return n;
     if(k == 0) return 1;
     return binom(n - 1, k) + binom(n - 1, k - 1);
+}
+
+void fillArray(int** arr, int size) {
+    for(size_t i = 0; i < size; i++) {
+        for(size_t j = 0; j <= i; j++) {
+            arr[i][j] = binom(i, j);
+        }
+    }
+}
+
+void printArr(int** arr, int size) {
+    for(size_t i = 0; i < size; i++) {
+        for(size_t j = 0; j <= i; j++) {
+            printf("%d ", arr[i][j]);
+        }
+        printf("\n");
+    }
 }
 
 int main() {
@@ -24,26 +50,7 @@ int main() {
         printf(">1 only");
         exit(0);
     }
-    /* for(int i = 0; i < 4; i++) { */
-    /*     for(int j = 0; j < i + 1; j++) { */
-    /*         printf("%d ", binom(i, j)); */
-    /*     } */
-    /*     printf("\n"); */
-    /* }  */
-    /* int** arr; */
-    /* arr = malloc(sizeof(int*) * n); */
-    /* for(int i = 0; i < n; i++) { */
-    /*     arr[i] = malloc(sizeof(int) * (i + 1)); */
-    /* } */
-    /* for(int i = 0; i < n; i++) { */
-    /*     for(int j = 0; j < i + 1; j++) { */
-    /*         arr[i][j] = j; */
-    /*     } */
-    /* } */
-    /* for(int i = 0; i < n; i++) { */
-    /*     for(int j = 0; j < i + 1; j++) { */
-    /*         printf("%d ", arr[i][j]); */
-    /*     } */
-    /*     printf("\n"); */
-    /* } */
+    int** arr = createArray(x);
+    fillArray(arr, x);
+    printArr(arr, x);
 }
