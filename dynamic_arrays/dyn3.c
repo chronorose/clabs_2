@@ -58,7 +58,7 @@ int main() {
     for(size_t i = 7; i < n1; i++) arr1[i] = i - 7;
     for(size_t i = 0; i < n2; i++) arr2[i] = i;
     printArr(arr1, n1);
+    printArr(arr2, n2);
     removeSubArr(arr1, arr2, &n1, n2);
     printArr(arr1, n1);
-    printArr(arr2, n2);
 }

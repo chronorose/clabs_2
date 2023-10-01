@@ -9,13 +9,13 @@ void nullCheck(void* ptr) {
 }
 
 void allocateArr(int** ptr, size_t n) {
-    *ptr = malloc(sizeof(int));
+    *ptr = malloc(sizeof(int) * n);
     nullCheck(*ptr);
 }
 
 void concat(int* ptr1, int* ptr2, int**res_arr, size_t n1, size_t n2, size_t* res_n) {
     *res_n = n1 + n2;
-    *res_arr  = malloc(sizeof(int) * *res_n);
+    *res_arr  = malloc(sizeof(int) * (*res_n));
     nullCheck(*res_arr);
     for(size_t i = 0; i < n1 + n2; i++) {
         if(i < n1) (*res_arr)[i] = ptr1[i];
@@ -38,7 +38,7 @@ void printArr(int* arr, int n) {
 }
 
 int main() {
-    size_t n1 = 5;
+    size_t n1 = 8;
     size_t n2 = 5;
     int* arr1 = initArray(n1);
     printArr(arr1, n1);

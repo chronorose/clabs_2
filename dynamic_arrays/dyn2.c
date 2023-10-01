@@ -44,9 +44,9 @@ int main() {
     size_t n2 = 3;
     int* arr1 = initArray(n1);
     int* arr2 = malloc(sizeof(int) * n2); 
-    for(size_t i = 0; i < n2; i++) arr2[i] = i + 7;
+    for(size_t i = 0; i < n2; i++) arr2[i] = i + 6;
     int* ptr = findSubArr(arr1, arr2, n1, n2);
     printArr(arr1, n1);
     printArr(arr2, n2);
-    printf("%p\n", ptr);
+    printf("%d\n", *ptr);
 }
