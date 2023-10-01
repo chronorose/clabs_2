@@ -61,4 +61,6 @@ int main() {
     printArr(arr2, n2);
     removeSubArr(arr1, arr2, &n1, n2);
     printArr(arr1, n1);
+    free(arr1);
+    free(arr2);
 }

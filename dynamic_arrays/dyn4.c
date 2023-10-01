@@ -53,4 +53,8 @@ int main() {
     int** arr = createArray(x);
     fillArray(arr, x);
     printArr(arr, x);
+    for(size_t i = 0; i < x; i++) {
+        free(arr[i]);
+    }
+    free(arr);
 }

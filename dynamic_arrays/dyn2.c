@@ -49,4 +49,6 @@ int main() {
     printArr(arr1, n1);
     printArr(arr2, n2);
     printf("%d\n", *ptr);
+    free(arr1);
+    free(arr2);
 }

@@ -48,4 +48,7 @@ int main() {
     size_t n_res;
     concat(arr1, arr2, &arr3, n1, n2, &n_res);
     printArr(arr3, n_res);
+    free(arr1);
+    free(arr2);
+    free(arr3);
 }
