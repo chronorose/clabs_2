@@ -1,16 +1,16 @@
 #include <stdio.h>
 
 void scanArr(int arr[4][4]) {
-    for(int i = 0; i < 4; i++) {
-        for(int j = 0; j < 4; j++) {
+    for(size_t i = 0; i < 4; i++) {
+        for(size_t j = 0; j < 4; j++) {
             scanf("%d", &arr[i][j]);
         }
     }
 }
 
 void printArr(int arr[4][4]) {
-    for(int i = 0; i < 4; i++) {
-        for(int j = 0; j < 4; j++) {
+    for(size_t i = 0; i < 4; i++) {
+        for(size_t j = 0; j < 4; j++) {
             printf("%2d ", arr[i][j]);
         }
         printf("\n");
@@ -26,8 +26,8 @@ void swap(int* arr1, int* arr2) {
 void reverseArr(int arr[4][4]) {
     int count = 0;
     int size = 4;
-    for(int i = 0; i < size; i++) {
-        for(int j = i + 1; j < size; j++) {
+    for(size_t i = 0; i < size; i++) {
+        for(size_t j = i + 1; j < size; j++) {
             swap(&arr[i][j], &arr[j][i]);
         }
     }
