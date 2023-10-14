@@ -3,10 +3,18 @@
 #include <assert.h>
 #include <string.h>
 
+void nullCheck(void* ptr) {
+    if(ptr == NULL) {
+        printf("something went pretty wrong hehe");
+        exit(0);
+    }
+}
+
 char* trim(const char* str, size_t n) {
     size_t real_size = 0;
     size_t start = 0, i = 0, end = 0, j = n - 1;
     char* new_string = malloc(sizeof(char) * n);
+    nullCheck(new_string);
     do {
         if(str[i] == ' ') {
             i++;
@@ -25,6 +33,7 @@ char* trim(const char* str, size_t n) {
         new_string[real_size] = str[i];
     }
     new_string = realloc(new_string, real_size);
+    nullCheck(new_string);
     return new_string;
 }
 
