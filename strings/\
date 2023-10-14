@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <string.h>
+
+char* trim(const char* str, size_t n) {
+    size_t real_size = 0;
+    size_t start = 0, i = 0, end = 0, j = n - 1;
+    char* new_string = malloc(sizeof(char) * n);
+    do {
+        if(str[i] == ' ') {
+            i++;
+            continue;
+        }
+        start = 1;
+    } while(!start);
+    do {
+       if(str[j] == ' ') {
+           j--;
+           continue;
+       } 
+       end = 1;
+    } while(!end);
+    for(; i <= j; i++, real_size++) {
+        new_string[real_size] = str[i];
+    }
+    new_string = realloc(new_string, real_size);
+    return new_string;
+}
+
+void tests() {
+    assert(strcmp(trim("   asd   ", 9), "asd"));
+    assert(strcmp(trim("   a sd   ", 10), "a sd"));
+    assert(strcmp(trim("   asd  ", 8), "asd"));
+}
+
+int main() {
+    char* a = "   asdqwe   ";
+    printf("%s\n", trim(a, strlen(a)));
+}
