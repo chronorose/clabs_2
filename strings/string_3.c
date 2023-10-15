@@ -27,17 +27,21 @@ void nullCheck(void* ptr) {
 
 String* str_init() {
     String* str = malloc(sizeof(String));
+    nullCheck(str);
     str->capacity = STR_SIZE;
     str->size = 0;
     str->str = malloc(sizeof(char*) * str->capacity); 
+    nullCheck(str->str);
     return str;
 }
 
 Dyn* dyn_init() {
     Dyn* dyn = malloc(sizeof(Dyn));
+    nullCheck(dyn);
     dyn->capacity = DYN_SIZE;
     dyn->size = 0;
     dyn->strs = malloc(sizeof(String*) * DYN_SIZE);
+    nullCheck(dyn->strs);
     for(size_t i = 0; i < dyn->capacity; i++) {
         dyn->strs[i] = str_init(); 
     }
@@ -62,6 +66,7 @@ void ensure_capacity_dyn(Dyn* dyn) {
     size_t old_cap = dyn->capacity;
     dyn->capacity = dyn->capacity * 2;
     dyn->strs = realloc(dyn->strs, dyn->capacity * sizeof(String*));
+    nullCheck(dyn->strs);
     for(size_t i = old_cap; i < dyn->capacity; i++) {
         dyn->strs[i] = str_init();
     }
