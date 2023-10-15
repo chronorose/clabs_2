@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
+#define STR_SIZE 8 
+#define DYN_SIZE 8 
 
 void nullCheck(void* ptr) {
     if(ptr == NULL) {
